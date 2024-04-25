@@ -37,6 +37,7 @@ android {
     buildFeatures {
         viewBinding = true
     }
+
     composeOptions {
         kotlinCompilerExtensionVersion = "1.3.2"
     }
@@ -65,10 +66,7 @@ dependencies {
     implementation("com.google.firebase:firebase-analytics-ktx")
 
     //Navigation
-    val nav_version = "2.7.7"
-    implementation("androidx.navigation:navigation-fragment-ktx:$nav_version")
-    implementation("androidx.navigation:navigation-ui-ktx:$nav_version")
-    implementation("androidx.navigation:navigation-compose:$nav_version")
-    implementation("androidx.navigation:navigation-dynamic-features-fragment:$nav_version")
-
+    val navVersion = "2.7.7"
+    implementation("androidx.navigation:navigation-fragment-ktx:$navVersion")
+    implementation("androidx.navigation:navigation-ui-ktx:$navVersion")
 }

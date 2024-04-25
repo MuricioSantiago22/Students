@@ -14,7 +14,6 @@ class AuthActivity : AppCompatActivity() {
         setContentView(binding.root)
         val analytics = FirebaseAnalytics.getInstance(this)
         val bundle = Bundle()
-
         //AnalyticsEvent
         bundle.putString("message", "Integracion de Firebase completa")
         analytics.logEvent("InitScreen", bundle)
