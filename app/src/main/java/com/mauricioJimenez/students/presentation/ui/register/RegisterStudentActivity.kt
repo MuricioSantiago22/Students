@@ -21,7 +21,6 @@ class RegisterStudentActivity : AppCompatActivity() {
         setContentView(binding.root)
         binding.registerButton.setOnClickListener {
             validateFields()
-            navigate()
         }
     }
 
@@ -49,6 +48,7 @@ class RegisterStudentActivity : AppCompatActivity() {
         }
 
         studentViewModel.insertStudentData(name, age)
+        navigate()
     }
     private fun navigate(){
         val intent = Intent(this, HomeActivity::class.java)
