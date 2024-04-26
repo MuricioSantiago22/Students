@@ -8,9 +8,8 @@ import com.mauricioJimenez.students.domain.entities.Student
 class StudentViewHolder(view: View): RecyclerView.ViewHolder(view) {
 
     private val binding = ItemStudentBinding.bind(view)
-
     fun render(student: Student){
-        binding.nameTV.text = student.name
-        binding.ageTV.text = student.age
+        binding.nameTV.text = "Name:${student.name}"
+        binding.ageTV.text = "Age:${student.age}"
     }
 }

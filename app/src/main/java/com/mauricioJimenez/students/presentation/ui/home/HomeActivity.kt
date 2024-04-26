@@ -6,9 +6,12 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.firebase.auth.FirebaseAuth
+import com.mauricioJimenez.students.R
 import com.mauricioJimenez.students.databinding.ActivityHomeBinding
 import com.mauricioJimenez.students.presentation.ui.register.RegisterStudentActivity
 import com.mauricioJimenez.students.presentation.ui.home.adapter.StudentAdapter
+import com.mauricioJimenez.students.presentation.ui.weather.WeatherActivity
 import com.mauricioJimenez.students.presentation.viewModel.StudentViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -25,9 +28,25 @@ class HomeActivity : AppCompatActivity() {
         setUpRecyclerView()
         observeViewModel()
         studentViewModel.getStudentData()
-        binding.buttonF.setOnClickListener {
-            val intent = Intent(this, RegisterStudentActivity::class.java)
-            startActivity(intent)
+        binding.bottomNavigation.setOnNavigationItemSelectedListener {
+            when(it.itemId){
+                R.id.nav_exit ->{
+                    FirebaseAuth.getInstance().signOut()
+                    super.onDestroy()
+                }
+                R.id.nav_add->{
+                    val intent = Intent(this, RegisterStudentActivity::class.java)
+                    startActivity(intent)
+                }
+                R.id.nav_weather ->{
+                    val intent = Intent(this, WeatherActivity::class.java)
+                    startActivity(intent)
+                }
+
+                else -> {
+                }
+            }
+            true
         }
     }
     private fun setUpRecyclerView() {
