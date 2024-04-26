@@ -64,6 +64,7 @@ dependencies {
     // FireBase
     implementation(platform("com.google.firebase:firebase-bom:32.3.1"))
     implementation("com.google.firebase:firebase-analytics-ktx")
+    implementation("com.google.firebase:firebase-auth-ktx")
 
     //Navigation
     val navVersion = "2.7.7"

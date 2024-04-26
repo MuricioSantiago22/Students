@@ -8,13 +8,13 @@
             <LayoutPositions>
               <option name="myPositions">
                 <map>
-                  <entry key="authActivity">
+                  <entry key="homeActivity">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="137" />
-                            <option name="y" value="-276" />
+                            <option name="x" value="500" />
+                            <option name="y" value="20" />
                           </Point>
                         </option>
                       </LayoutPositions>
@@ -26,11 +26,16 @@
                         <option name="myPosition">
                           <Point>
                             <option name="x" value="256" />
-                            <option name="y" value="12" />
+                            <option name="y" value="63" />
                           </Point>
                         </option>
                         <option name="myPositions">
                           <map>
+                            <entry key="action_loginFragment_to_homeActivity">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                             <entry key="action_loginFragment_to_signUpFragment">
                               <value>
                                 <LayoutPositions />
@@ -47,8 +52,22 @@
                         <option name="myPosition">
                           <Point>
                             <option name="x" value="12" />
-                            <option name="y" value="12" />
+                            <option name="y" value="20" />
                           </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_signUpFragment_to_homeActivity">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_signUpFragment_to_loginFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
                         </option>
                       </LayoutPositions>
                     </value>
