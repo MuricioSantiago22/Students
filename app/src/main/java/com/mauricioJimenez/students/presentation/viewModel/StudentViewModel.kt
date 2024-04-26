@@ -31,4 +31,7 @@ class StudentViewModel @Inject constructor(
             }
         }
     }
+    fun insertStudentData(){
+
+    }
 }

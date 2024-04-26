@@ -16,6 +16,9 @@
         android:theme="@style/Theme.Students"
         tools:targetApi="31">
         <activity
+            android:name=".presentation.ui.register.RegisterStudentActivity"
+            android:exported="false" />
+        <activity
             android:name=".presentation.ui.home.HomeActivity"
             android:exported="false" />
         <activity
