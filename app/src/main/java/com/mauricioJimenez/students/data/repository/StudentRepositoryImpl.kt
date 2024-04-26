@@ -7,11 +7,15 @@ import com.mauricioJimenez.students.domain.entities.Student
 import com.mauricioJimenez.students.domain.repository.StudentRepository
 import javax.inject.Inject
 
+
 class StudentRepositoryImpl @Inject constructor(
     private  val studentDao: StudentDao
 ): StudentRepository {
     override suspend fun getStudentDataFromDB(): List<Student> {
         val response : List<StudentEntity> = studentDao.getAllStudents()
         return  response.map { it.toDomain()}
+    }
+    override suspend fun insertAuditData(student: StudentEntity) {
+        studentDao.insertStudent(student)
     }
 }

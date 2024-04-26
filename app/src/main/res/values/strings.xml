@@ -17,6 +17,10 @@
     <string name="wrong_user_or_password">Wrong user or password</string>
     <string name="password_length_must_be_six">Password length must be six</string>
     <string name="this_is_a_content_description">This is a content description</string>
+    <string name="name_must_not_be_empty">Name must not be empty</string>
+    <string name="age_must_not_be_empty">Age must not be empty</string>
+    <string name="name_only_letters">Name only letters</string>
+    <string name="age_only_numbers">Age only numbers</string>
     <string name="name">Name</string>
     <string name="age">Age</string>
     <string name="logout">Logout</string>

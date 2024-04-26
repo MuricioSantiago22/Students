@@ -19,7 +19,7 @@
             android:minHeight="?attr/actionBarSize"/>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/email_input"
+            android:id="@+id/name_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -27,31 +27,31 @@
             android:layout_marginEnd="16dp">
 
             <EditText
-                android:id="@+id/email_edit"
+                android:id="@+id/name_edit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:autofillHints="emailAddress"
+                android:autofillHints="name"
                 android:hint="@string/name"
-                android:inputType="textEmailAddress"/>
+                android:inputType="text"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/password_input"
+            android:id="@+id/age_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp">
 
             <EditText
-                android:id="@+id/password_edit"
+                android:id="@+id/age_edit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:autofillHints="password"
+                android:autofillHints="age"
                 android:hint="@string/age"
-                android:inputType="textPassword"/>
+                android:inputType="text"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
-            android:id="@+id/login_button"
+            android:id="@+id/register_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"

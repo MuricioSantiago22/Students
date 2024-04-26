@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.mauricioJimenez.students.domain.entities.Student
 import com.mauricioJimenez.students.domain.useCase.GetStudentDataUseCase
+import com.mauricioJimenez.students.domain.useCase.InsertStudentDataUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -17,6 +18,7 @@ import kotlin.coroutines.CoroutineContext
 @HiltViewModel
 class StudentViewModel @Inject constructor(
     private val getStudentDataUseCase: GetStudentDataUseCase,
+    private val insertStudentDataUseCase: InsertStudentDataUseCase,
     private val coroutineContext: CoroutineContext
 ): ViewModel() {
 
@@ -31,7 +33,9 @@ class StudentViewModel @Inject constructor(
             }
         }
     }
-    fun insertStudentData(){
-
+    fun insertStudentData(name: String, age:String){
+        viewModelScope.launch(coroutineContext){
+            insertStudentDataUseCase(name, age)
+        }
     }
 }

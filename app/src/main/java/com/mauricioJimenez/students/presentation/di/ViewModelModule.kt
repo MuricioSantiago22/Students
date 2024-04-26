@@ -1,6 +1,7 @@
 package com.mauricioJimenez.students.presentation.di
 
 import com.mauricioJimenez.students.domain.useCase.GetStudentDataUseCase
+import com.mauricioJimenez.students.domain.useCase.InsertStudentDataUseCase
 import com.mauricioJimenez.students.presentation.di.CoroutineScopeModule.provideIOCoroutineContext
 import com.mauricioJimenez.students.presentation.viewModel.StudentViewModel
 import dagger.Module
@@ -14,8 +15,9 @@ object ViewModelModule {
 
     @Provides
     fun providerStudentViewModel(
-        getStudentUseCase: GetStudentDataUseCase
+        getStudentUseCase: GetStudentDataUseCase,
+        insertStudentDataUseCase: InsertStudentDataUseCase
     ): StudentViewModel {
-        return StudentViewModel(getStudentUseCase, provideIOCoroutineContext())
+        return StudentViewModel(getStudentUseCase,insertStudentDataUseCase, provideIOCoroutineContext())
     }
 }
