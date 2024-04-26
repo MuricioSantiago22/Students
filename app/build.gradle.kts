@@ -92,6 +92,9 @@ dependencies {
 
     //Location
     implementation ("com.google.android.gms:play-services-location:18.0.0")
+
+    //Swipe
+    implementation("it.xabaras.android:recyclerview-swipedecorator:1.4")
 }
 kapt {
     correctErrorTypes = true

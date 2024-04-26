@@ -9,7 +9,7 @@ class StudentViewHolder(view: View): RecyclerView.ViewHolder(view) {
 
     private val binding = ItemStudentBinding.bind(view)
     fun render(student: Student){
-        binding.nameTV.text = "Name:${student.name}"
-        binding.ageTV.text = "Age:${student.age}"
+        binding.nameTV.text = "Nombre:${student.name}"
+        binding.ageTV.text = "Edad:${student.age}"
     }
 }

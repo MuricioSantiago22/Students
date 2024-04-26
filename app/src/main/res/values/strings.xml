@@ -1,30 +1,33 @@
 <resources>
     <string name="app_name">Students</string>
-    <string name="register">Register</string>
-    <string name="do_not_have_an_account">Do not have an account?</string>
-    <string name="password">Password</string>
+    <string name="register">Registrar</string>
+    <string name="do_not_have_an_account">No tienes un cuenta?</string>
+    <string name="password">Contraseña</string>
     <string name="email">Email</string>
-    <string name="login">Login</string>
-    <string name="sign_up">Sign up</string>
-    <string name="confirm_password">Confirm password</string>
-    <string name="email_is_not_valid">Email is not valid</string>
-    <string name="password_must_not_be_empty">Password must not be empty</string>
-    <string name="passwords_do_not_match">Passwords do not match</string>
+    <string name="login">Iniciar Sesión</string>
+    <string name="sign_up">Registrar</string>
+    <string name="confirm_password">Confirma contraseña</string>
+    <string name="email_is_not_valid">Email invalido</string>
+    <string name="password_must_not_be_empty">Campo vacío</string>
+    <string name="passwords_do_not_match">P</string>
     <string name="error_sign_up">Error signing up</string>
     <string name="error_sign_in">Error logging in</string>
-    <string name="user_already_exists">User already exists</string>
-    <string name="there_was_an_error">There was an error</string>
-    <string name="wrong_user_or_password">Wrong user or password</string>
-    <string name="password_length_must_be_six">Password length must be six</string>
+    <string name="user_already_exists">Usuario ya existe</string>
+    <string name="there_was_an_error">ocurrio un error</string>
+    <string name="wrong_user_or_password">Contraseña invalida</string>
+    <string name="password_length_must_be_six">Contraseña invalida</string>
     <string name="this_is_a_content_description">This is a content description</string>
-    <string name="name_must_not_be_empty">Name must not be empty</string>
-    <string name="age_must_not_be_empty">Age must not be empty</string>
-    <string name="name_only_letters">Name only letters</string>
-    <string name="age_only_numbers">Age only numbers</string>
-    <string name="name">Name</string>
-    <string name="age">Age</string>
-    <string name="logout">Logout</string>
-    <string name="update">Update</string>
+    <string name="name_must_not_be_empty">Campo vacío</string>
+    <string name="age_must_not_be_empty">Campo vacío</string>
+    <string name="name_only_letters">Nombre invalido</string>
+    <string name="age_only_numbers">Contraseña invalida</string>
+    <string name="name">Nombre</string>
+    <string name="age">Edad</string>
+    <string name="logout">Salir</string>
+    <string name="update">Actualizar</string>
+    <string name="students">Estudiantes</string>
+    <string name="weather">Clima</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

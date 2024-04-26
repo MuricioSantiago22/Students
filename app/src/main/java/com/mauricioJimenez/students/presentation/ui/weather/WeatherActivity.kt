@@ -1,12 +1,14 @@
 package com.mauricioJimenez.students.presentation.ui.weather
 
 import android.Manifest
+import android.content.pm.ActivityInfo
 import android.content.pm.PackageManager
 import android.location.Address
 import android.location.Geocoder
 import android.location.Location
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.core.app.ActivityCompat
@@ -31,6 +33,7 @@ class WeatherActivity : AppCompatActivity() {
     private lateinit var fusedLocationClient: FusedLocationProviderClient
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         binding= ActivityWeatherBinding.inflate(layoutInflater)
         setContentView(binding.root)
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
@@ -88,6 +91,8 @@ class WeatherActivity : AppCompatActivity() {
                             binding.address.text = city
                             binding.updatedAt.text = formattedDate
                             binding.update.setOnClickListener {
+                                binding.loader.visibility = View.VISIBLE
+                                binding.temp.visibility = View.GONE
                                 weatherViewModel.getWeather(lat, lon)
                             }
                         }
@@ -100,8 +105,11 @@ class WeatherActivity : AppCompatActivity() {
     }
 
     private fun observeViewModel() {
+        binding.loader.visibility = View.VISIBLE
         weatherViewModel.weatherData.observe(this) { weather ->
             weather?.let {
+                binding.loader.visibility = View.GONE
+                binding.temp.visibility = View.VISIBLE
                 bindView(weather)
             }
         }

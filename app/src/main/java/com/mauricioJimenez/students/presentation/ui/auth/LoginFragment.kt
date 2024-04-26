@@ -33,7 +33,6 @@ class LoginFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.loginRegisterButton.setOnClickListener {
             findNavController().navigate(R.id.action_loginFragment_to_signUpFragment)
-
         }
         binding.loginButton.setOnClickListener {
             validateFields()
@@ -57,6 +56,10 @@ class LoginFragment : Fragment() {
             binding.passwordInput.error = getString(R.string.password_length_must_be_six)
             return
         }
+        startAuth(email, password)
+
+    }
+    private fun startAuth(email: String, password:String){
         FirebaseAuth.getInstance().signInWithEmailAndPassword(email, password)
             .addOnCompleteListener {
             if (it.isSuccessful){
@@ -64,9 +67,7 @@ class LoginFragment : Fragment() {
             }else{
                 showAlert(it.exception.toString())
             }
-
         }
-
     }
     private fun isValidEmail(email: String?): Boolean {
         return !email.isNullOrEmpty() && Patterns.EMAIL_ADDRESS.matcher(email).matches()

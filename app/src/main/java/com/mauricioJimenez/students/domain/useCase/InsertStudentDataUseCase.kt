@@ -10,6 +10,6 @@ class InsertStudentDataUseCase @Inject constructor(
 ) {
     suspend operator fun invoke(name: String, age: String){
         val studentEntity = Student(id= 0, name = name, age = age).toEntity()
-         studentRepository.insertAuditData(studentEntity)
+         studentRepository.insertStudentData(studentEntity)
     }
 }

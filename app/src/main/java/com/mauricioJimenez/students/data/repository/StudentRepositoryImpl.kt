@@ -15,7 +15,15 @@ class StudentRepositoryImpl @Inject constructor(
         val response : List<StudentEntity> = studentDao.getAllStudents()
         return  response.map { it.toDomain()}
     }
-    override suspend fun insertAuditData(student: StudentEntity) {
+    override suspend fun insertStudentData(student: StudentEntity) {
         studentDao.insertStudent(student)
+    }
+
+    override suspend fun deleteStudent(id: Int) {
+        studentDao.deleteStudentById(id)
+    }
+
+    override suspend fun updateStudentById(studentId: Int, name: String, age: String) {
+        studentDao.updateStudentById(studentId, name, age)
     }
 }

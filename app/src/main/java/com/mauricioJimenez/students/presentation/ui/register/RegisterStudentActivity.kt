@@ -46,12 +46,13 @@ class RegisterStudentActivity : AppCompatActivity() {
             binding.ageInput.error = getString(R.string.age_only_numbers)
             return
         }
-
         studentViewModel.insertStudentData(name, age)
         navigate()
+        finish()
     }
     private fun navigate(){
         val intent = Intent(this, HomeActivity::class.java)
         startActivity(intent)
+        finish()
     }
 }

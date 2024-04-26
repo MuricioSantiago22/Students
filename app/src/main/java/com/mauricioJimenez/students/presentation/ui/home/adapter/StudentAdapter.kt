@@ -21,8 +21,21 @@ class StudentAdapter(private var students: List<Student>) : RecyclerView.Adapter
 
     override fun getItemCount() = students.size
 
+    fun getStudentAtPosition(position: Int): Student {
+        return students[position]
+    }
+
     fun updateData(newStudents: List<Student>) {
         students = newStudents
         notifyDataSetChanged()
+    }
+
+    fun deleteItem(i: Int) {
+        if (i in 0 until students.size) {
+            val newList = students.toMutableList()
+            newList.removeAt(i)
+            students = newList
+            notifyItemRemoved(i)
+        }
     }
 }

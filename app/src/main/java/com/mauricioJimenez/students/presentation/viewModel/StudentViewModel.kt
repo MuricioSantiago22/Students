@@ -5,8 +5,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.mauricioJimenez.students.domain.entities.Student
+import com.mauricioJimenez.students.domain.useCase.DeleteStudentUseCase
 import com.mauricioJimenez.students.domain.useCase.GetStudentDataUseCase
 import com.mauricioJimenez.students.domain.useCase.InsertStudentDataUseCase
+import com.mauricioJimenez.students.domain.useCase.UpdateStudentUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -19,6 +21,8 @@ import kotlin.coroutines.CoroutineContext
 class StudentViewModel @Inject constructor(
     private val getStudentDataUseCase: GetStudentDataUseCase,
     private val insertStudentDataUseCase: InsertStudentDataUseCase,
+    private val deleteStudentUseCase: DeleteStudentUseCase,
+    private val updateStudentUseCase: UpdateStudentUseCase,
     private val coroutineContext: CoroutineContext
 ): ViewModel() {
 
@@ -36,6 +40,17 @@ class StudentViewModel @Inject constructor(
     fun insertStudentData(name: String, age:String){
         viewModelScope.launch(coroutineContext){
             insertStudentDataUseCase(name, age)
+        }
+    }
+    fun deleteStudent(id:Int){
+        viewModelScope.launch(coroutineContext) {
+            deleteStudentUseCase(id)
+        }
+    }
+
+    fun updateStudent(studentId: Int, name: String, age: String){
+        viewModelScope.launch(coroutineContext){
+            updateStudentUseCase(studentId, name, age)
         }
     }
 }

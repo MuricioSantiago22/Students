@@ -6,5 +6,7 @@ import com.mauricioJimenez.students.domain.entities.Student
 interface StudentRepository {
 
     suspend fun getStudentDataFromDB():List<Student>
-    suspend fun  insertAuditData(student: StudentEntity)
+    suspend fun  insertStudentData(student: StudentEntity)
+    suspend fun  deleteStudent(id:Int)
+    suspend fun updateStudentById(studentId: Int, name: String, age: String)
 }
