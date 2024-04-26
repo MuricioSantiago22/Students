@@ -7,7 +7,6 @@ import javax.inject.Inject
 class GetStudentDataUseCase @Inject constructor(
     private val studentRepository: StudentRepository
 ) {
-
     suspend operator fun invoke():List<Student>{
         return studentRepository.getStudentDataFromDB()
     }
