@@ -1,3 +1,5 @@
 package com.mauricioJimenez.students.domain.entities
 
-data class Weather()
+data class Weather(
+    val hourly: Hourly
+)

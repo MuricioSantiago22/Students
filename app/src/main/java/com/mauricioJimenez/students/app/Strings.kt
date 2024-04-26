@@ -2,6 +2,7 @@ package com.mauricioJimenez.students.app
 
  object Strings {
 
-     const val API_KEY = "df1fc09d1843becaf33ff03aa79e4cff"
-     const val URL = "https://api.openweathermap.org/data/3.0/"
+     const val HOURLY ="temperature_2m"
+     const val URL = "https://api.open-meteo.com/v1/"
+     const val LOCATION_PERMISSION_REQUEST_CODE = 1001
 }
