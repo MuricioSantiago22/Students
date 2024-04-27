@@ -1,10 +1,12 @@
 package com.mauricioJimenez.students.presentation.ui.home
 
 import android.app.AlertDialog
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.ItemTouchHelper
@@ -68,6 +70,7 @@ class HomeActivity : BaseActivity() {
         dialog.show()
     }
     private fun setUpRecyclerView() {
+        val intent = Intent(this, UpdateActivity::class.java)
         val swipeGesture = object :SwipeGesture(this){
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 when(direction){
@@ -83,8 +86,7 @@ class HomeActivity : BaseActivity() {
                         intent.putExtra("STUDENT_ID", student.id)
                         intent.putExtra("STUDENT_AGE", student.age)
                         intent.putExtra("STUDENT_NAME", student.name)
-                        navigate(UpdateActivity())
-
+                        startActivity(intent)
                     }
                 }
 
