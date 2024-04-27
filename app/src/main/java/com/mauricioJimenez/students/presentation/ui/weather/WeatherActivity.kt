@@ -18,6 +18,7 @@ import com.mauricioJimenez.students.R
 import com.mauricioJimenez.students.utils.Strings
 import com.mauricioJimenez.students.databinding.ActivityWeatherBinding
 import com.mauricioJimenez.students.presentation.ui.base.BaseActivity
+import com.mauricioJimenez.students.presentation.ui.home.HomeActivity
 import com.mauricioJimenez.students.presentation.viewModel.WeatherViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import java.text.SimpleDateFormat
@@ -70,6 +71,10 @@ class WeatherActivity : BaseActivity() {
                 }
             }
         }
+    }
+
+    override fun onBackPressed() {
+        navigate(HomeActivity())
     }
 
     private fun getLocation() {
