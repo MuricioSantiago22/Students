@@ -1,17 +1,16 @@
 package com.mauricioJimenez.students.presentation.ui.register
 
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
 import com.mauricioJimenez.students.R
 import com.mauricioJimenez.students.databinding.ActivityRegisterStudentBinding
+import com.mauricioJimenez.students.presentation.ui.base.BaseActivity
 import com.mauricioJimenez.students.presentation.ui.home.HomeActivity
 import com.mauricioJimenez.students.presentation.viewModel.StudentViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class RegisterStudentActivity : AppCompatActivity() {
+class RegisterStudentActivity : BaseActivity() {
     private val studentViewModel: StudentViewModel by viewModels()
 
     private lateinit var  binding: ActivityRegisterStudentBinding
@@ -22,6 +21,10 @@ class RegisterStudentActivity : AppCompatActivity() {
         binding.registerButton.setOnClickListener {
             validateFields()
         }
+    }
+
+    override fun onBackPressed() {
+        navigate(HomeActivity())
     }
 
     private fun validateFields(){
@@ -47,12 +50,6 @@ class RegisterStudentActivity : AppCompatActivity() {
             return
         }
         studentViewModel.insertStudentData(name, age)
-        navigate()
-        finish()
-    }
-    private fun navigate(){
-        val intent = Intent(this, HomeActivity::class.java)
-        startActivity(intent)
-        finish()
+        navigate(HomeActivity())
     }
 }

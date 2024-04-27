@@ -1,20 +1,19 @@
 package com.mauricioJimenez.students.presentation.ui.update
 
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import androidx.activity.viewModels
 import com.mauricioJimenez.students.R
 import com.mauricioJimenez.students.databinding.ActivityUpdateBinding
+import com.mauricioJimenez.students.presentation.ui.base.BaseActivity
 import com.mauricioJimenez.students.presentation.ui.home.HomeActivity
 import com.mauricioJimenez.students.presentation.viewModel.StudentViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 
 @AndroidEntryPoint
-class UpdateActivity : AppCompatActivity() {
+class UpdateActivity :BaseActivity() {
     private val studentViewModel: StudentViewModel by viewModels()
 
     private lateinit var binding: ActivityUpdateBinding
@@ -30,6 +29,9 @@ class UpdateActivity : AppCompatActivity() {
 
     }
 
+    override fun onBackPressed() {
+        navigate(HomeActivity())
+    }
 
     private fun setupFormValidation() {
         val id = intent.getIntExtra("STUDENT_ID", 0)
@@ -61,7 +63,7 @@ class UpdateActivity : AppCompatActivity() {
                 } else if (!age.matches(Regex("^[0-9]+\$"))) {
                     binding.ageInput.error = getString(R.string.age_only_numbers)
                 } else {
-                    binding.ageInput.error = null // Clear error
+                    binding.ageInput.error = null
                 }
 
             }
@@ -76,14 +78,7 @@ class UpdateActivity : AppCompatActivity() {
     private fun register(id:Int){
         binding.updateButton.setOnClickListener {
             studentViewModel.updateStudent(id,name,age)
-            navigate()
-            finish()
+            navigate(HomeActivity())
         }
-    }
-
-
-    private fun navigate(){
-        val intent = Intent(this, HomeActivity::class.java)
-        startActivity(intent)
     }
 }

@@ -6,7 +6,6 @@ import android.content.pm.PackageManager
 import android.location.Address
 import android.location.Geocoder
 import android.location.Location
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -15,10 +14,10 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
-import com.mauricioJimenez.students.app.Strings
+import com.mauricioJimenez.students.R
+import com.mauricioJimenez.students.utils.Strings
 import com.mauricioJimenez.students.databinding.ActivityWeatherBinding
-import com.mauricioJimenez.students.domain.entities.Weather
-import com.mauricioJimenez.students.presentation.viewModel.StudentViewModel
+import com.mauricioJimenez.students.presentation.ui.base.BaseActivity
 import com.mauricioJimenez.students.presentation.viewModel.WeatherViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import java.text.SimpleDateFormat
@@ -26,7 +25,7 @@ import java.util.Date
 import java.util.Locale
 
 @AndroidEntryPoint
-class WeatherActivity : AppCompatActivity() {
+class WeatherActivity : BaseActivity() {
     private val weatherViewModel: WeatherViewModel by viewModels()
 
     private lateinit var binding: ActivityWeatherBinding
@@ -36,8 +35,12 @@ class WeatherActivity : AppCompatActivity() {
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         binding= ActivityWeatherBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
-            != PackageManager.PERMISSION_GRANTED) {
+        if (ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.ACCESS_FINE_LOCATION
+        )
+            != PackageManager.PERMISSION_GRANTED
+            ) {
             ActivityCompat.requestPermissions(
                 this,
                 arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
@@ -58,7 +61,8 @@ class WeatherActivity : AppCompatActivity() {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         when (requestCode) {
             Strings.LOCATION_PERMISSION_REQUEST_CODE -> {
-                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                if (
+                    grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
                     getLocation()
                 } else {
@@ -82,11 +86,16 @@ class WeatherActivity : AppCompatActivity() {
                         val lat = location.latitude
                         val lon = location.longitude
                         weatherViewModel.getWeather(lat, lon)
-                        val directions: List<Address> = geocoder.getFromLocation(lat, lon, 1)!!
+                        val directions: List<Address> = geocoder.getFromLocation(
+                            lat,
+                            lon,
+                            1)!!
                         if (directions.isNotEmpty()) {
                             val city = directions[0].locality
                             val currentDate = Date()
-                            val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+                            val dateFormat = SimpleDateFormat(
+                                "dd/MM/yyyy", Locale.getDefault()
+                            )
                             val formattedDate = dateFormat.format(currentDate)
                             binding.address.text = city
                             binding.updatedAt.text = formattedDate
@@ -98,7 +107,11 @@ class WeatherActivity : AppCompatActivity() {
                         }
 
                     } ?: run {
-                        Toast.makeText(this, "No se pudo obtener la ubicación", Toast.LENGTH_SHORT).show()
+                        Toast
+                            .makeText(
+                                this,
+                                getString(R.string.string_toast),
+                                Toast.LENGTH_SHORT).show()
                     }
                 }
         }
@@ -110,14 +123,9 @@ class WeatherActivity : AppCompatActivity() {
             weather?.let {
                 binding.loader.visibility = View.GONE
                 binding.temp.visibility = View.VISIBLE
-                bindView(weather)
+                binding.temp.text = "${weather.hourly.temperature.firstOrNull().toString()}°C"
             }
         }
-    }
-
-    private fun bindView(weather: Weather){
-        binding.temp.text = "${weather.hourly.temperature.firstOrNull().toString()}°C"
-
     }
 
 }

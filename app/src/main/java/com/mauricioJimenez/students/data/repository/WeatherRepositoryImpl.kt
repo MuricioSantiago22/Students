@@ -1,6 +1,6 @@
 package com.mauricioJimenez.students.data.repository
 
-import com.mauricioJimenez.students.app.Strings
+import com.mauricioJimenez.students.utils.Strings
 import com.mauricioJimenez.students.data.remote.mapper.toDomain
 import com.mauricioJimenez.students.data.remote.network.WeatherApiClient
 import com.mauricioJimenez.students.domain.entities.Hourly

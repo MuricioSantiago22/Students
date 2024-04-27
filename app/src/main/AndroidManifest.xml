@@ -18,6 +18,11 @@
         android:theme="@style/Theme.Students"
         tools:targetApi="31">
         <activity
+            android:name=".presentation.ui.base.BaseActivity"
+            android:exported="false"
+            android:label="@string/title_activity_base"
+            android:theme="@style/Theme.Students" />
+        <activity
             android:name=".presentation.ui.update.UpdateActivity"
             android:exported="false" />
         <activity

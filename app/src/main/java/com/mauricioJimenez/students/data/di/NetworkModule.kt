@@ -1,6 +1,6 @@
 package com.mauricioJimenez.students.data.di
 
-import com.mauricioJimenez.students.app.Strings
+import com.mauricioJimenez.students.utils.Strings
 import com.mauricioJimenez.students.data.remote.network.WeatherApiClient
 import dagger.Module
 import dagger.Provides

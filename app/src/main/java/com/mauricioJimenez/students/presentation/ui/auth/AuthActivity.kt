@@ -1,12 +1,12 @@
 package com.mauricioJimenez.students.presentation.ui.auth
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.mauricioJimenez.students.databinding.ActivityAuthBinding
+import com.mauricioJimenez.students.presentation.ui.base.BaseActivity
 
 
-class AuthActivity : AppCompatActivity() {
+class AuthActivity : BaseActivity() {
     private lateinit var binding: ActivityAuthBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -14,7 +14,6 @@ class AuthActivity : AppCompatActivity() {
         setContentView(binding.root)
         val analytics = FirebaseAnalytics.getInstance(this)
         val bundle = Bundle()
-        //AnalyticsEvent
         bundle.putString("message", "Integracion de Firebase completa")
         analytics.logEvent("InitScreen", bundle)
     }

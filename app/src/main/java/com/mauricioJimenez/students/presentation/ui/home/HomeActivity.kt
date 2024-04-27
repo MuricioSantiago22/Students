@@ -1,8 +1,6 @@
 package com.mauricioJimenez.students.presentation.ui.home
 
 import android.app.AlertDialog
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -15,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
 import com.mauricioJimenez.students.R
 import com.mauricioJimenez.students.databinding.ActivityHomeBinding
+import com.mauricioJimenez.students.presentation.ui.base.BaseActivity
 import com.mauricioJimenez.students.presentation.ui.register.RegisterStudentActivity
 import com.mauricioJimenez.students.presentation.ui.home.adapter.StudentAdapter
 import com.mauricioJimenez.students.presentation.ui.home.adapter.SwipeGesture
@@ -24,8 +23,7 @@ import com.mauricioJimenez.students.presentation.viewModel.StudentViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class HomeActivity : AppCompatActivity() {
-
+class HomeActivity : BaseActivity() {
 
     private lateinit var  binding: ActivityHomeBinding
     private lateinit var adapter: StudentAdapter
@@ -39,8 +37,7 @@ class HomeActivity : AppCompatActivity() {
         observeViewModel()
         studentViewModel.getStudentData()
         binding.bottomAdd.setOnClickListener {
-            val intent = Intent(this, RegisterStudentActivity::class.java)
-            startActivity(intent)
+            navigate(RegisterStudentActivity())
         }
         binding.bottomExit.setOnClickListener {
             FirebaseAuth.getInstance().signOut()
@@ -71,7 +68,6 @@ class HomeActivity : AppCompatActivity() {
         dialog.show()
     }
     private fun setUpRecyclerView() {
-        val intent = Intent(this, UpdateActivity::class.java)
         val swipeGesture = object :SwipeGesture(this){
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 when(direction){
@@ -87,8 +83,7 @@ class HomeActivity : AppCompatActivity() {
                         intent.putExtra("STUDENT_ID", student.id)
                         intent.putExtra("STUDENT_AGE", student.age)
                         intent.putExtra("STUDENT_NAME", student.name)
-                        startActivity(intent)
-                        finish()
+                        navigate(UpdateActivity())
 
                     }
                 }
@@ -108,8 +103,7 @@ class HomeActivity : AppCompatActivity() {
         binding.topAppBar.setOnMenuItemClickListener {
             when(it.itemId){
                 R.id.weather ->{
-                    val intent = Intent(this, WeatherActivity::class.java)
-                    startActivity(intent)
+                    navigate(WeatherActivity())
                      true
                 }
 
