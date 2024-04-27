@@ -87,6 +87,7 @@ class HomeActivity : BaseActivity() {
                         intent.putExtra("STUDENT_AGE", student.age)
                         intent.putExtra("STUDENT_NAME", student.name)
                         startActivity(intent)
+                        finish()
                     }
                 }
 
