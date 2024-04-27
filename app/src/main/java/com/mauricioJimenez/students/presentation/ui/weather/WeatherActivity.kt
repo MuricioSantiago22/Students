@@ -33,7 +33,6 @@ class WeatherActivity : BaseActivity() {
     private lateinit var fusedLocationClient: FusedLocationProviderClient
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         binding= ActivityWeatherBinding.inflate(layoutInflater)
         setContentView(binding.root)
         if (ContextCompat.checkSelfPermission(
